@@ -36,10 +36,7 @@ let dayjs = require('dayjs');
 export default {
 	data() {
 		return {
-			monthList: [],
-			page: 1,
-			length: 50,
-			isLastPage: false
+			
 		};
 	},
 	methods: {

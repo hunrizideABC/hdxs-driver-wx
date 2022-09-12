@@ -54,7 +54,7 @@
 						<text class="item-title">其他费用</text>
 						<text class="item-desc">代驾过程中产生的其他费用</text>
 					</view>
-					<view class="right">{{ otherFree }}</view>
+					<view class="right">{{ otherFee }}</view>
 				</view>
 			</view>
 		</view>
@@ -123,7 +123,6 @@ export default {
 			baseMileagePrice: '',
 			baseMileage: '',
 			exceedMileagePrice: '',
-
 			waitingFee: '暂无',
 			baseMinute: '',
 			waitingMinute: '--',
@@ -134,24 +133,95 @@ export default {
 			returnMileage: '--',
 			parkingFee: '暂无',
 			tollFee: '暂无',
-			otherFree: '暂无',
+			otherFee: '暂无',
 			total: '--',
 			taxFee: '--',
 			driverIncome: '--'
 		};
 	},
 	methods: {
-		
+		sendOrderBill: function() {
+			let that = this;
+			uni.showModal({
+				title: '提示消息',
+				content: '是否发送代驾账单给客户？',
+				success: function(resp) {
+					if (resp.confirm) {
+						let data = {
+							orderId: that.orderId,
+							customerId: that.customerId,
+							status: 6
+						};
+						that.ajax(that.url.updateOrderStatus, 'POST', data, function(resp) {
+							that.workStatus = '等待付款';
+							uni.setStorageSync('workStatus', '等待付款');
+							//页面发生跳转
+							uni.navigateTo({
+								url: '../waiting_payment/waiting_payment?orderId=' + that.orderId
+							});
+						});
+					}
+				}
+			});
+		},
+		sendOrderBill: function() {
+			let that = this;
+			uni.showModal({
+				title: '提示消息',
+				content: '是否发送代驾账单给客户？',
+				success: function(resp) {
+					if (resp.confirm) {
+						let data = {
+							orderId: that.orderId,
+							customerId: that.customerId,
+							status: 6
+						};
+						that.ajax(that.url.updateOrderStatus, 'POST', data, function(resp) {
+							that.workStatus = '等待付款';
+							uni.setStorageSync('workStatus', '等待付款');
+							uni.navigateTo({
+								url: '../waiting_payment/waiting_payment?orderId=' + that.orderId
+							});
+						});
+					}
+				}
+			});
+		}
 	},
 	onLoad: function(options) {
-		
+		let that = this;
+		that.orderId = options.orderId;
+		that.customerId = options.customerId;
+		let data = {
+			orderId: that.orderId
+		};
+		that.ajax(that.url.searchReviewDriverOrderBill, 'POST', data, function(resp) {
+			let result = resp.data.result;
+			that.favourFee = result.favourFee;
+			that.incentiveFee = result.incentiveFee;
+			that.realMileage = result.realMileage;
+			that.mileageFee = result.mileageFee;
+			that.baseMileagePrice = result.baseMileagePrice;
+			that.baseMileage = result.baseMileage;
+			that.exceedMileagePrice = result.exceedMileagePrice;
+			that.waitingFee = result.waitingFee;
+			that.baseMinute = result.baseMinute;
+			that.waitingMinute = result.waitingMinute;
+			that.exceedMinutePrice = result.exceedMinutePrice;
+			that.returnFee = result.returnFee;
+			that.baseReturnMileage = result.baseReturnMileage;
+			that.exceedReturnPrice = result.exceedReturnPrice;
+			that.returnMileage = result.returnMileage;
+			that.parkingFee = result.parkingFee;
+			that.tollFee = result.tollFee;
+			that.otherFee = result.otherFee;
+			that.total = result.total;
+			that.driverIncome = result.driverIncome;
+			that.taxFee = result.taxFee;
+		});
 	},
-	onShow: function() {
-		
-	},
-	onHide: function() {
-		
-	}
+	onShow: function() {},
+	onHide: function() {}
 };
 </script>
 

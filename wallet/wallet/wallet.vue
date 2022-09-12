@@ -88,16 +88,7 @@ let dayjs = require('dayjs');
 export default {
 	data() {
 		return {
-			showList: false,
-			list: [],
-			id: null,
-			balance: 0,
-			incomeTotalInDay: 0,
-			incomeTotalInMonth: 0,
-			paymentTotalInMonth: 0,
-			recordInMonth: [],
-			monthLabel: '',
-			monthValue: ''
+
 		};
 	},
 	methods: {

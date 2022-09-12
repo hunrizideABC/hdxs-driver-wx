@@ -1,5 +1,5 @@
 <template>
-<view>
+	<view>
 		<view class="customer-container">
 			<u-avatar :src="photo" mode="square"></u-avatar>
 			<view class="info">
@@ -107,27 +107,9 @@
 				</view>
 			</view>
 		</view>
-		<view class="operate-container" v-if="status == 6"><view class="operate" @tap="enterFeeHandle">输入相关费用</view></view>
-
-		<view v-if="status >= 7">
-			<view class="setion-title">
-				<image src="../static/order/rate.png" mode="widthFix"></image>
-				<text>客户评价</text>
-			</view>
-			<view class="section-content">
-				<view class="remark-container">
-					<view class="remark-rate">
-						<view class="photo"><u-avatar :src="photo" size="60" /></view>
-						<view class="rate">
-							<u-rate :count="comment.count" v-model="comment.value" disabled="true" active-color="#FFBB2A" size="40" />
-							<view v-if="comment.value<=2">我要申诉</view>
-						</view>
-					</view>
-					<view class="remark">{{ comment.remark }}</view>
-				</view>
-			</view>
+		<view class="operate-container">
+			<view class="operate" @tap="enterFeeHandle">输入相关费用</view>
 		</view>
-
 		<view class="contact-container">
 			<view class="contact">
 				<text class="label">客服电话：</text>
@@ -146,45 +128,7 @@
 export default {
 	data() {
 		return {
-			orderId: null,
-			customerId:null,
-			photo: '',
-			title: '',
-			tel: '',
-			startPlace: '',
-			endPlace: '',
-			createTime: '',
-			favourFee: '',
-			incentiveFee: '',
-			carPlate: '',
-			carType: '',
-			status: null,
-			realMileage: '--',
-			mileageFee: '暂无',
-			baseMileagePrice: '',
-			baseMileage: '',
-			exceedMileagePrice: '',
-
-			waitingFee: '暂无',
-			base_minute: '',
-			waitingMinute: '--',
-			exceedMinutePrice: '',
-			returnFee: '暂无',
-			baseReturnMileage: '',
-			exceedReturnPrice: '',
-			returnMileage: '--',
-			parkingFee: '暂无',
-			tollFee: '暂无',
-			otherFree: '暂无',
-			total: '--',
-			voucherFee: '--',
-			realPay: '--',
-			img: '',
-			comment: {
-				count: 5,
-				value: 0,
-				remark: '[ 客户没有评价，系统默认为好评~ ]'
-			}
+			
 		};
 	},
 	methods: {

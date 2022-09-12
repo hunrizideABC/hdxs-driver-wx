@@ -20,13 +20,7 @@
 export default {
 	data() {
 		return {
-			id: null,
-			readFlag: null,
-			refId: null,
-			senderName: '',
-			sendTime: '',
-			senderPhoto: '',
-			msg: ''
+			
 		};
 	},
 	onShow: function() {

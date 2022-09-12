@@ -23,10 +23,7 @@
 export default {
 	data() {
 		return {
-			page: 1,
-			length: 50,
-			list: [],
-			isLastPage: false
+			
 		};
 	},
 	methods: {

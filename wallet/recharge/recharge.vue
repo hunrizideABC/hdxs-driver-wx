@@ -50,10 +50,7 @@
 export default {
 	data() {
 		return {
-			id: 0,
-			balance: 0,
-			amount: 50,
-			recharge: [10, 20, 50, 100, 150, 200, 300, 500]
+
 		};
 	},
 	methods: {

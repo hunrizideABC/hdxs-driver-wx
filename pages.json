@@ -56,7 +56,18 @@
 			}
 
 		}
-	],
+
+	    
+        ,{
+            "path" : "pages/heat_chart/heat_chart",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "接单热点地区",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"tabBar": {
 		"color": "#444",
 		"selectedColor": "#1297DB",

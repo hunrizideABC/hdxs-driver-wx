@@ -33,9 +33,7 @@
 export default {
 	data() {
 		return {
-			i: 0,
-			orderId: null,
-			timer: null
+			
 		};
 	},
 	methods: {
